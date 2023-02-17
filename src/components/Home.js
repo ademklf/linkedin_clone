@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import Leftside from "./LeftSide";
+import Main from "./Main";
+import RightSide from "./RightSide";
 
 const Home = (props) => {
   return (
@@ -12,6 +15,11 @@ const Home = (props) => {
           </p>
         </h5>
       </Section>
+      <Layout>
+        <Leftside />
+        <Main />
+        <RightSide />
+      </Layout>
     </Container>
   );
 };
@@ -42,6 +50,20 @@ const Section = styled.section`
     font-weight: 600;
   }
   @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 0 5px;
+  }
+`;
+
+const Layout = styled.div`
+  display: grid;
+  grid-template-areas: "leftside main rightside";
+  grid-template-columns: minmax(0, 5fr) minmax(0, 12fr) minmax(300px, 7fr);
+  column-gap: 25px;
+  row-gap: 25px;
+  margin: 25px 0;
+  @media (max-width: 768px) {
+    display: flex;
     flex-direction: column;
     padding: 0 5px;
   }
