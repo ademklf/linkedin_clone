@@ -1,9 +1,19 @@
 import styled from "styled-components";
-
+import InsertPhotoOutlinedIcon from "@mui/icons-material/InsertPhotoOutlined";
 const Main = (props) => {
   return (
     <Container>
       <ShareBox>Share</ShareBox>
+      <div>
+        <img src="/images/user.svg" alt="user.svg" />
+        <button>Start a post</button>
+      </div>
+
+      <div>
+        <button>
+          <InsertPhotoOutlinedIcon className="icon" />
+        </button>
+      </div>
     </Container>
   );
 };
