@@ -55,6 +55,42 @@ const Main = (props) => {
               <img src="/images/shared-image.jpg" alt="shared" />
             </a>
           </SharedImg>
+          <SocialCounts>
+            <li>
+              <button>
+                <img
+                  src="https://static-exp1.licdn.com/sc/h/d310t2g24pvdy4pt1jkedo4yb"
+                  alt="like"
+                />
+                <img
+                  src="https://static-exp1.licdn.com/sc/h/5thsbmikm6a8uov24ygwd914f"
+                  alt="clap"
+                />
+                <span>75</span>
+              </button>
+            </li>
+            <li>
+              <a>2 comments</a>
+            </li>
+          </SocialCounts>
+          <SocialActions>
+            <button>
+              <img src="/images/like-icon.png" alt="like" />
+              <span>Like</span>
+            </button>
+            <button>
+              <img src="/images/comments-icon.jpg" alt="comment" />
+              <span>Comments</span>
+            </button>
+            <button>
+              <img src="/images/share-icon.png" alt="share" />
+              <span>Share</span>
+            </button>
+            <button>
+              <img src="/images/send-icon.png" alt="send" />
+              <span>Send</span>
+            </button>
+          </SocialActions>
         </Article>
       </div>
     </Container>
@@ -201,6 +237,47 @@ const SharedImg = styled.div`
     width: 100%;
     height: 100%;
     max-height: 400px;
+  }
+`;
+const SocialCounts = styled.ul`
+  line-height: 1.3;
+  display: flex;
+  align-items: flex-start;
+  overflow: auto;
+  margin: 0 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid #e9e5df;
+  list-style: none;
+  li {
+    margin-right: 5px;
+    font-size: 12px;
+    button {
+      display: flex;
+    }
+  }
+`;
+
+const SocialActions = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+  min-height: 40px;
+  padding: 4px 8px;
+  button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px;
+    color: #0a66c2;
+    border: none;
+    background-color: white;
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      margin-left: 8px;
+    }
   }
 `;
 
