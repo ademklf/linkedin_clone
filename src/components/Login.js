@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { connect } from "react-redux";
+import { signInAPI } from "../actions";
 
 const Login = (props) => {
   return (
     <Container>
       <Nav>
-        <a href="">
+        <a href="/">
           <img src="/images/login-logo.svg" alt="login" />
         </a>
         <div>
@@ -162,6 +163,8 @@ const mapStateToProps = (state) => {
   return {};
 };
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  signIn: () => dispatch(signInAPI()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
