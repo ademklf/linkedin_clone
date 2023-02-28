@@ -1,4 +1,5 @@
 import { auth, provider } from "../firebase";
+import db from "../firebase";
 import { SET_USER } from "./actionType";
 
 export const setUser = (payload) => ({
@@ -11,10 +12,11 @@ export function signInAPI() {
     auth
       .signInWithPopup(provider)
       .then((payload) => {
-        console.log(payload.user);
-        // dispatch(setUser(payload.user));
+        dispatch(setUser(payload.user));
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => {
+        alert(error.message);
+      });
   };
 }
 
@@ -25,5 +27,17 @@ export function getUserAuth() {
         dispatch(setUser(user));
       }
     });
+  };
+}
+export function signOutAPI() {
+  return (dispatch) => {
+    auth
+      .signOut()
+      .then(() => {
+        dispatch(setUser(null));
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 }

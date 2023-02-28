@@ -1,28 +1,33 @@
+import React from "react";
 import styled from "styled-components";
-import Leftside from "./LeftSide";
+import LeftSide from "./LeftSide";
 import Main from "./Main";
 import RightSide from "./RightSide";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
 const Home = (props) => {
   return (
     <Container>
+      {!props.user && <Redirect to="/" />}
       <Section>
         <h5>
           <a>Hiring in a hurry? -</a>
-          <p>
-            Find talented pros in a record time with Upwork and keep business
-            moving
-          </p>
         </h5>
+        <p>
+          Find talented pros in a record time with Upwork and keep business
+          moving
+        </p>
       </Section>
       <Layout>
-        <Leftside />
+        <LeftSide />
         <Main />
         <RightSide />
       </Layout>
     </Container>
   );
 };
+
 const Container = styled.div`
   padding-top: 52px;
   max-width: 100%;
@@ -36,7 +41,6 @@ const Section = styled.section`
   text-decoration: underline;
   display: flex;
   justify-content: center;
-
   h5 {
     color: #0a66c2;
     font-size: 14px;
@@ -69,4 +73,10 @@ const Layout = styled.div`
   }
 `;
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+  };
+};
+
+export default connect(mapStateToProps)(Home);
