@@ -4,6 +4,8 @@ import OndemandVideoOutlinedIcon from "@mui/icons-material/OndemandVideoOutlined
 import EventNoteOutlinedIcon from "@mui/icons-material/EventNoteOutlined";
 import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import PostModal from "./PostModal";
+
 const Main = (props) => {
   return (
     <Container>
@@ -93,6 +95,7 @@ const Main = (props) => {
           </SocialActions>
         </Article>
       </div>
+      <PostModal />
     </Container>
   );
 };
