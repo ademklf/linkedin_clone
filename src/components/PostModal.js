@@ -35,7 +35,13 @@ const PostModal = (props) => {
             </SharedContent>
             <ShareCreation>
               <AttachAssets>
-                <img src="/images/share-image.svg" alt="shareimage" />
+                <AssetButton>
+                  <img src="/images/share-image.svg" alt="shareimage" />
+                </AssetButton>
+
+                <AssetButton>
+                  <img src="/images/share-video.svg" alt="sharevideo" />
+                </AssetButton>
               </AttachAssets>
               <ShareComment>
                 <AssetButton>
@@ -43,11 +49,10 @@ const PostModal = (props) => {
                   Anyone
                 </AssetButton>
               </ShareComment>
-              <PostButton>Post</PostButton>
+              <PostButton disabled={!editorText ? true : false}>
+                Post
+              </PostButton>
             </ShareCreation>
-            <AssetButton>
-              <img src="/images/share-video.svg" alt="sharevideo" />
-            </AssetButton>
           </Content>
         </Container>
       )}
@@ -64,6 +69,7 @@ const Container = styled.div`
   z-index: 9999;
   color: black;
   background-color: rgba(0, 0, 0, 0.8);
+  animation: fadeIn 0.5s;
 `;
 
 const Content = styled.div`
