@@ -3,46 +3,55 @@ import styled from "styled-components";
 
 const PostModal = (props) => {
   const [editorText, setEditorText] = useState("");
+  const reset = (e) => {
+    setEditorText("");
+    props.handleClick(e);
+  };
+
   return (
-    <Container>
-      <Content>
-        <Header>
-          <h2>Create a post</h2>
-          <button>
-            <img src="/images/close-icon.png" alt="close-icon" />
-          </button>
-        </Header>
-        <SharedContent>
-          <UserInfo>
-            <img src="/images/user.svg" alt="user" />
-            <span>Name</span>
-          </UserInfo>
-          <Editor>
-            <textarea
-              value={editorText}
-              onChange={(e) => setEditorText(e.target.value)}
-              placeholder="What do you want to talk about?"
-              autoFocus={true}
-            ></textarea>
-          </Editor>
-        </SharedContent>
-        <ShareCreation>
-          <AttachAssets>
-            <img src="/images/share-image.svg" alt="shareimage" />
-          </AttachAssets>
-          <ShareComment>
+    <>
+      {props.showModal === "open" && (
+        <Container>
+          <Content>
+            <Header>
+              <h2>Create a post</h2>
+              <button onClick={(event) => reset(event)}>
+                <img src="/images/close-icon.png" alt="close-icon" />
+              </button>
+            </Header>
+            <SharedContent>
+              <UserInfo>
+                <img src="/images/user.svg" alt="user" />
+                <span>Name</span>
+              </UserInfo>
+              <Editor>
+                <textarea
+                  value={editorText}
+                  onChange={(e) => setEditorText(e.target.value)}
+                  placeholder="What do you want to talk about?"
+                  autoFocus={true}
+                ></textarea>
+              </Editor>
+            </SharedContent>
+            <ShareCreation>
+              <AttachAssets>
+                <img src="/images/share-image.svg" alt="shareimage" />
+              </AttachAssets>
+              <ShareComment>
+                <AssetButton>
+                  <img src="/images/share-comment.svg" alt="share-comment" />
+                  Anyone
+                </AssetButton>
+              </ShareComment>
+              <PostButton>Post</PostButton>
+            </ShareCreation>
             <AssetButton>
-              <img src="/images/share-comment.svg" alt="share-comment" />
-              Anyone
+              <img src="/images/share-video.svg" alt="sharevideo" />
             </AssetButton>
-          </ShareComment>
-          <PostButton>Post</PostButton>
-        </ShareCreation>
-        <AssetButton>
-          <img src="/images/share-video.svg" alt="sharevideo" />
-        </AssetButton>
-      </Content>
-    </Container>
+          </Content>
+        </Container>
+      )}
+    </>
   );
 };
 
