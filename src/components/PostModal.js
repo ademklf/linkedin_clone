@@ -16,6 +16,21 @@ const PostModal = (props) => {
             <span>Name</span>
           </UserInfo>
         </SharedContent>
+        <ShareCreation>
+          <AttachAssets>
+            <img src="/images/share-image.svg" alt="shareimage" />
+          </AttachAssets>
+          <ShareComment>
+            <AssetButton>
+              <img src="/images/share-comment.svg" alt="share-comment" />
+              Anyone
+            </AssetButton>
+          </ShareComment>
+          <PostButton>Post</PostButton>
+        </ShareCreation>
+        <AssetButton>
+          <img src="/images/share-video.svg" alt="sharevideo" />
+        </AssetButton>
       </Content>
     </Container>
   );
@@ -98,6 +113,53 @@ const UserInfo = styled.div`
     font-size: 16px;
     line-height: 1.5;
     margin-left: 5px;
+  }
+`;
+
+const ShareCreation = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 24px 12px 16px;
+`;
+
+const AssetButton = styled.button`
+  display: flex;
+  align-items: center;
+  height: 40px;
+  min-width: auto;
+  color: rgba(0, 0, 0, 0.5);
+  img {
+    color: #70b5f9;
+  }
+`;
+
+const AttachAssets = styled.div`
+  align-items: center;
+  display: flex;
+  padding-right: 8px;
+  ${AssetButton} {
+    width: 40px;
+  }
+`;
+const ShareComment = styled.div`
+  padding-left: 8px;
+  margin-right: auto;
+  border-left: 1px solid rgba(0, 0, 0, 0.15);
+  ${AssetButton} {
+    svg {
+      margin-right: 50px;
+    }
+  }
+`;
+const PostButton = styled.button`
+  min-width: 60px;
+  border-radius: 20px;
+  padding-left: 16px;
+  padding-right: 16px;
+  background: #0a66c2;
+  color: white;
+  &:hover {
+    background: #004182;
   }
 `;
 
