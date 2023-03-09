@@ -6,6 +6,8 @@ import EventNoteOutlinedIcon from "@mui/icons-material/EventNoteOutlined";
 import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import PostModal from "./PostModal";
+import { ContentCopy } from "@mui/icons-material";
+import { connect } from "react-redux";
 
 const Main = (props) => {
   const [showModal, setShowModal] = useState("close");
@@ -62,7 +64,9 @@ const Main = (props) => {
           </button>
         </div>
       </ShareBox>
-      <div>
+      <Content>
+        {props.loading && <img src="./images/spin-loading.gif" />}
+
         <Article>
           <SharedActor>
             <a>
@@ -120,7 +124,7 @@ const Main = (props) => {
             </button>
           </SocialActions>
         </Article>
-      </div>
+      </Content>
       <PostModal showModal={showModal} handleClick={handleClick} />
     </Container>
   );
@@ -309,5 +313,23 @@ const SocialActions = styled.div`
     }
   }
 `;
+const Content = styled.div`
+  text-align: center;
+  & > img {
+    width: 30px;
+  }
+`;
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    loading: state.articleState.loading,
+    user: state.userState.user,
+    articles: state.articleState.articles,
+  };
+};
+
+const mapDispatchTopProps = (dispatch) => ({
+  // getArticles: () => dispatch(getArticlesAPI()),
+});
+
+export default connect(mapStateToProps, mapDispatchTopProps)(Main);
